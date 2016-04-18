@@ -1,0 +1,12 @@
+
+  public enum {{{datatypeWithEnum}}} {
+    {{#allowableValues}}{{#enumVars}}{{{name}}}("{{{value}}}"){{^-last}},
+    {{/-last}}{{#-last}};{{/-last}}{{/enumVars}}{{/allowableValues}}
+
+    private String value;
+
+    {{{datatypeWithEnum}}}(String value) {
+      this.value = value;
+    }
+
+  }
