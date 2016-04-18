@@ -7,12 +7,8 @@ public class {{classname}} {{#parent}}extends {{{parent}}}{{/parent}} {{#seriali
 {{>enumClass}}{{/items}}{{/items.isEnum}}
   private {{{datatypeWithEnum}}} {{name}} = {{{defaultValue}}};{{/vars}}
 
-  {{#vars}}{{^isReadOnly}}
-  public {{classname}} {{name}}({{{datatypeWithEnum}}} {{name}}) {
-    this.{{name}} = {{name}};
-    return this;
-  }
-  {{/isReadOnly}}{{#vendorExtensions.extraAnnotation}}
+  {{#vars}}
+  {{#vendorExtensions.extraAnnotation}}
   {{vendorExtensions.extraAnnotation}}{{/vendorExtensions.extraAnnotation}}
   public {{{datatypeWithEnum}}} {{getter}}() {
     return {{name}};
