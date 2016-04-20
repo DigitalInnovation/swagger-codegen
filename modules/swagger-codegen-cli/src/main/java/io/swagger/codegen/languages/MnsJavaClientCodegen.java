@@ -3,6 +3,8 @@ package io.swagger.codegen.languages;
 import io.swagger.codegen.CodegenConfig;
 import io.swagger.codegen.CodegenModel;
 import io.swagger.codegen.CodegenProperty;
+import io.swagger.models.properties.BooleanProperty;
+import io.swagger.models.properties.Property;
 
 public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenConfig {
 
@@ -25,9 +27,9 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
     public void postProcessModelProperty(CodegenModel model, CodegenProperty property) {
 
         if ("array".equals(property.containerType)) {
-          model.imports.add("ArrayList");
+            model.imports.add("ArrayList");
         } else if ("map".equals(property.containerType)) {
-          model.imports.add("HashMap");
+            model.imports.add("HashMap");
         }
 
         model.imports.remove("ToStringSerializer");
@@ -40,6 +42,15 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
         model.imports.remove("Objects");
         model.imports.remove("StringUtil");
 
+    }
+
+    @Override
+    public CodegenProperty fromProperty(String name, Property p) {
+        CodegenProperty property = super.fromProperty(name, p);
+        if (property != null && p instanceof BooleanProperty) {
+            property.getter = "is" + getterAndSetterCapitalize(name);
+        }
+        return property;
     }
 
 }
