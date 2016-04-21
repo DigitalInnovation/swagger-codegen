@@ -44,6 +44,7 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
 
     }
 
+	/*
     @Override
     public CodegenProperty fromProperty(String name, Property p) {
         CodegenProperty property = super.fromProperty(name, p);
@@ -52,5 +53,6 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
         }
         return property;
     }
+	*/
 
 }
