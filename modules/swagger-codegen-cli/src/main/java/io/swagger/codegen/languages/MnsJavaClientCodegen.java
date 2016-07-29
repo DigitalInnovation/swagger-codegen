@@ -26,12 +26,6 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
     @Override
     public void postProcessModelProperty(CodegenModel model, CodegenProperty property) {
 
-        if ("array".equals(property.containerType)) {
-            model.imports.add("ArrayList");
-        } else if ("map".equals(property.containerType)) {
-            model.imports.add("HashMap");
-        }
-
         model.imports.remove("ToStringSerializer");
         model.imports.remove("JsonSerialize");
 
@@ -43,16 +37,5 @@ public class MnsJavaClientCodegen extends JavaClientCodegen implements CodegenCo
         model.imports.remove("StringUtil");
 
     }
-
-	/*
-    @Override
-    public CodegenProperty fromProperty(String name, Property p) {
-        CodegenProperty property = super.fromProperty(name, p);
-        if (property != null && p instanceof BooleanProperty) {
-            property.getter = "is" + getterAndSetterCapitalize(name);
-        }
-        return property;
-    }
-	*/
 
 }
